@@ -2,12 +2,12 @@ package com.withShoes.www.domain.user;
 
 import com.withShoes.www.domain.base.BaseTimeEntity;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Getter
+@Data
 @NoArgsConstructor
 @Entity
 public class User extends BaseTimeEntity {

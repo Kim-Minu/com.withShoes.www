@@ -7,6 +7,8 @@ import com.withShoes.www.dto.posts.PostsResponseDto;
 import com.withShoes.www.dto.posts.PostsSaveRequestDto;
 import com.withShoes.www.dto.posts.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,7 +42,7 @@ public class PostsService {
 
     @Transactional(readOnly = true)
     public List<PostsListResponseDto> findAllDesc(){
-        return postsRepository.findAllDesc().stream()
+        return postsRepository.findAll(Sort.by(Sort.Direction.DESC, "id")).stream()
                 .map(PostsListResponseDto::new)
                 .collect(Collectors.toList());
     }
